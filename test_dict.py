@@ -24,7 +24,7 @@ for key in params.keys():
 
     elif key == "dilate":
         # frame_dialte, params['dialate'] = imgproc.dilate(frame, params[key])
-        frame, params['dialate'] = imgproc.dilate(frame, params[key])
+        frame, params['dilate'] = imgproc.dilate(frame, params[key])
 
     elif key == "thresh":
         # frame_binary, params['thresh'] = imgproc.threshold(frame, params[key])

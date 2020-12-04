@@ -5,6 +5,7 @@ import numpy as np
 import math
 import argparse
 import random as rng
+import pandas as pd
 from pypylon import pylon
 from pathlib import Path
 from lib_save import Imageprocessing, read_save
@@ -50,6 +51,7 @@ def process(img_bi,img_ori_result):
     '''
     img_bi_write = cv2.cvtColor(img_bi, cv2.COLOR_GRAY2BGR)
     img = img_bi
+    df_result = []
     for i in range(len(rect_params['main'])):
         main = rect_params['main'][str(i)]
         # imCrop = im[int(main[1]):int(main[1] + main[3]), int(main[0]):int(main[0] + main[2])]
@@ -59,6 +61,9 @@ def process(img_bi,img_ori_result):
         x1 = int(main[0] + main[2])
         cv2.rectangle(img_ori_result, (x0, y0), (x1, y1), (255, 0, 0), 3)
         cv2.rectangle(img_bi_write, (x0, y0), (x1, y1), (255, 0, 0), 3)
+
+        cv2.putText(img_ori_result,str(i+1),(x0, y0),cv2.FONT_HERSHEY_SIMPLEX,1,(50,100,0),3)
+        cv2.putText(img_bi_write,str(i+1),(x0, y0),cv2.FONT_HERSHEY_SIMPLEX,1,(50,100,0),3)
 
         crop = img_bi[y0:y1, x0:x1]
 
@@ -98,8 +103,9 @@ def process(img_bi,img_ori_result):
                 # print(index)
                 area = cv2.contourArea(filter_crop_contours[index])
                 print("area", area)
-                if area > 24:
-                    result = "NG"
+                if area > 200:
+                    position =  "Wire : "+str(i+1)+" PIN : " +str(j+1)
+                    result = " NG"
                     cv2.rectangle(img_ori_result, (x0 + sub_x0, y0 + sub_y0), (x0 + sub_x1, y0 + sub_y1), (0, 0, 255),
                                   3)  # draw in big picture
                     cv2.rectangle(img_bi_write, (x0 + sub_x0, y0 + sub_y0), (x0 + sub_x1, y0 + sub_y1), (0, 0, 255),
@@ -107,16 +113,19 @@ def process(img_bi,img_ori_result):
                     cv2.drawContours(plot,[filter_crop_contours[index]], 0, (0, 255, 255), 3)
                     # cv2.drawContours(img_ori_result, filter_crop_contours[index], 1, (0, 255, 255), 1)
 
-                    cv2.imshow("qwe", plot)
-                    cv2.waitKey(0)
+                    # cv2.imshow("qwe", plot)
 
                 else:
-                    result = "OK"
+                    result = " OK"
             else:
-                result = "OK"
-            print(result)
-        # cv2.imshow("asd", crop)
-        # cv2.waitKey(0)
+                result = " OK"
+                area = 0
+            df_result.append([i+1,j+1,area,result])
+
+            # cv2.imshow("asd", crop)
+            # cv2.waitKey(0)
+    df_result = pd.DataFrame(df_result, columns=['Wire', 'PIN', 'AREA', 'Result'])
+    print(df_result)
     return img_bi_write, img_ori_result
 
 
@@ -198,7 +207,7 @@ if __name__ == "__main__":
         rect_params = json.load(f)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=str, default='pylon',
+    parser.add_argument('--source', type=str, default='test1',
                         help='source pylon number for webcam')  # file/folder, 0 for webcam
 
     opt = parser.parse_args()

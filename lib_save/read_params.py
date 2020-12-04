@@ -18,8 +18,8 @@ class read_save(object):
                 frame, params['erode'] = self.imgproc.erode(frame, params[key])
 
             elif key == "dilate":
-                # frame_dialte, params['dialate'] = imgproc.dilate(frame, params[key])
-                frame, params['dialate'] = self.imgproc.dilate(frame, params[key])
+                # frame_dialte, params['dilate'] = imgproc.dilate(frame, params[key])
+                frame, params['dilate'] = self.imgproc.dilate(frame, params[key])
 
             elif key == "thresh":
                 # frame_binary, params['thresh'] = imgproc.threshold(frame, params[key])
@@ -35,6 +35,8 @@ class read_save(object):
 
             elif key == "line":
                 # frame_line, lines, params['line'] = imgproc.line_detection(frame, frame0, params[key])
+                if len(frame.shape) == 2:
+                    frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
                 frame, lines, params['line'] = self.imgproc.line_detection(frame, frame0, params[key])
 
             elif key == "canny":
@@ -43,6 +45,8 @@ class read_save(object):
 
             elif key == "circle":
                 # frame_circle, circle, params['circle'] = imgproc.circle_detection(frame, frame0, params[key], show=False)
+                if len(frame.shape) == 2:
+                    frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
                 frame, circle, params['circle'] = self.imgproc.circle_detection(frame, frame0, params[key], show=False)
 
         return frame

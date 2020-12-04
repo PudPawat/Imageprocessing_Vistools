@@ -75,7 +75,7 @@ def process(frame, imgproc):
     frame_HSV, params['HSV'] = imgproc.HSV_range(frame)
     # frame_HSV = cv.resize(frame_HSV,(int(frame_HSV.shape[1]/3),int(frame_HSV.shape[0]/3)))
     frame_erode, params['erode'] = imgproc.erode(frame_HSV)
-    frame_dialte, params['dialate'] = imgproc.dilate(frame_erode)
+    frame_dialte, params['dilate'] = imgproc.dilate(frame_erode)
 
     # frame_canny, params['canny'] = imgproc.canny(frame_erode, show=True)
     # canny = frame_canny.copy()
