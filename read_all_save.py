@@ -9,6 +9,7 @@ import pandas as pd
 from pypylon import pylon
 from pathlib import Path
 from lib_save import Imageprocessing, read_save
+from copy import deepcopy
 
 def listDir(dir):
     fileNames = os.listdir(dir)
@@ -49,8 +50,12 @@ def process(img_bi,img_ori_result):
     :param img:
     :return: img after process
     '''
-    img_bi_write = cv2.cvtColor(img_bi, cv2.COLOR_GRAY2BGR)
-    img = img_bi
+    print(len(img_bi["final"].shape))
+    if len(img_bi["final"].shape) == 2:
+        img_bi_write = cv2.cvtColor(img_bi["final"], cv2.COLOR_GRAY2BGR)
+    else:
+        img_bi_write = deepcopy(img_bi)
+    img = img_bi["final"]
     df_result = []
     for i in range(len(rect_params['main'])):
         main = rect_params['main'][str(i)]
@@ -191,10 +196,11 @@ def main(params, rect_params):
         cv2.imshow("show",frame_rect)
         key = cv2.waitKey(1)
         if key == ord("c"):
-            img_params = reading.read_params(params, frame_ori)
+            img_params,_,_ = reading.read_params(params, frame_ori)
+            print(img_params)
             # print(frame.shape)
-            img_params_write, ori_write = process(img_params, frame_ori)
-            cv2.imshow("show", img_params_write)
+            # img_params_write, ori_write = process(img_params, frame_ori)
+            cv2.imshow("show", img_params["final"])
             cv2.waitKey(0)
 
 if __name__ == "__main__":
@@ -207,7 +213,7 @@ if __name__ == "__main__":
         rect_params = json.load(f)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=str, default='test1',
+    parser.add_argument('--source', type=str, default='0',
                         help='source pylon number for webcam')  # file/folder, 0 for webcam
 
     opt = parser.parse_args()

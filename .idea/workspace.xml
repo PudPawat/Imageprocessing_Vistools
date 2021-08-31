@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bda84d3a-15a0-4425-92ef-e2ff76788e85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/main.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/logger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/improc.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/improc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/trackbar.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/trackbar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_save/improc_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib_save/improc_save.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_save/read_params.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib_save/read_params.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/params.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/params.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/read_all_save.py" beforeDir="false" afterPath="$PROJECT_DIR$/read_all_save.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +23,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/read_all_save.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4840">
+              <caret line="220" column="28" lean-forward="true" selection-start-line="220" selection-start-column="28" selection-end-line="220" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setting_params.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="179">
-              <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
+              <caret line="94" column="43" lean-forward="true" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -62,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/main.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="44">
+              <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -96,11 +102,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/rectangles_1.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/params_test.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -112,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib_save/read_params.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2464">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="321">
+              <caret line="161" column="8" selection-start-line="161" selection-start-column="8" selection-end-line="161" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -141,6 +142,7 @@
       <find>rng</find>
       <find>area</find>
       <find>imgproc</find>
+      <find>rect_params</find>
       <find>Sharpen</find>
     </findStrings>
     <replaceStrings>
@@ -160,7 +162,6 @@
         <option value="$PROJECT_DIR$/check_rectangle.py" />
         <option value="$PROJECT_DIR$/lib_save/improc_save.py" />
         <option value="$PROJECT_DIR$/lib_save/__init__.py" />
-        <option value="$PROJECT_DIR$/lib_save/read_params.py" />
         <option value="$PROJECT_DIR$/config/params_test.json" />
         <option value="$PROJECT_DIR$/config/params_test_1.json" />
         <option value="$PROJECT_DIR$/config/rectangles_test.json" />
@@ -168,12 +169,13 @@
         <option value="$PROJECT_DIR$/config/rectangles_2.json" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/config/params.json" />
-        <option value="$PROJECT_DIR$/read_all_save.py" />
         <option value="$PROJECT_DIR$/utils/__init__.py" />
         <option value="$PROJECT_DIR$/utils/utils.py" />
         <option value="$PROJECT_DIR$/lib/improc.py" />
         <option value="$PROJECT_DIR$/setting_params.py" />
         <option value="$PROJECT_DIR$/config/main.json" />
+        <option value="$PROJECT_DIR$/lib_save/read_params.py" />
+        <option value="$PROJECT_DIR$/read_all_save.py" />
       </list>
     </option>
   </component>
@@ -236,7 +238,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.setting_params">
+  <component name="RunManager" selected="Python.read_all_save">
     <configuration name="CROP_REC" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="machine_vision_software" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -344,8 +346,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.setting_params" />
         <item itemvalue="Python.read_all_save" />
+        <item itemvalue="Python.setting_params" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.CROP_REC" />
         <item itemvalue="Python.test_dict" />
@@ -369,12 +371,12 @@
     <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18545838" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2028451" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33152762" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18634886" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -512,16 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/read_all_save.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CROP_REC.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -576,13 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/params.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="49" selection-start-column="49" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/improc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -590,23 +575,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setting_params.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib_save/read_params.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2464">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
@@ -619,8 +587,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/main.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        <state relative-caret-position="44">
+          <caret line="2" column="18" lean-forward="true" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib_save/read_params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="161" column="8" selection-start-line="161" selection-start-column="8" selection-end-line="161" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/params.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setting_params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="94" column="43" lean-forward="true" selection-start-line="94" selection-start-column="43" selection-end-line="94" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/read_all_save.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4840">
+          <caret line="220" column="28" lean-forward="true" selection-start-line="220" selection-start-column="28" selection-end-line="220" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
