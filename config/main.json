@@ -1,0 +1,12 @@
+{
+  "basic": {
+    "source": "0",
+    "green":"config/green1.json",
+    "gold": "",
+    "black": "config/black1.json",
+    "red": "config/red.json",
+    "camera_config": "config/camera_config/a2A2590-60ucPRO_40065215.pfs",
+    "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle"],
+    "process": ["HSV","sharp","blur"]
+  }
+}

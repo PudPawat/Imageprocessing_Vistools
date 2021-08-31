@@ -1,23 +1,40 @@
-import cv2 as cv
 import numpy as np
 import math
 from .trackbar import *
+import cv2 as cv
 
 
 class Imageprocessing(object):
 
+    def __init__(self,opt):
+        for improc_module in opt.basic.process :
+            if improc_module == "sharp":
+                self.var_sharpen = TrackBar.Sharpen()
+            elif improc_module == "blur":
+                self.var_blur = TrackBar.Blur()
 
-    def __init__(self):
+            elif improc_module == "thresh":
+                self.var_binary = TrackBar.Binary()
 
-        self.var_canny = TrackBar.Canny()
-        self.var_HSV_range = TrackBar.HSV()
-        # self.var_blur = TrackBar.Blur()
-        # self.var_binary = TrackBar.Binary()
-        # self.var_line_det = TrackBar.LineDetection()
-        # self.var_sharpen = TrackBar.Sharpen()
-        # self.var_circle_det = TrackBar.CircleDetection()
-        self.var_dilate = TrackBar.Dilate()
-        self.var_erode = TrackBar.Erode()
+            elif improc_module == "line":
+                self.var_line_det = TrackBar.LineDetection()
+
+            elif improc_module == "HSV":
+                self.var_HSV_range = TrackBar.HSV()
+
+            elif improc_module == "dilate":
+                self.var_dilate = TrackBar.Dilate()
+
+            elif improc_module == "erode":
+                self.var_erode = TrackBar.Erode()
+
+            elif improc_module == "canny":
+                self.var_canny = TrackBar.Canny()
+
+            elif improc_module == "circle":
+                self.var_circle_det = TrackBar.CircleDetection()
+
+
 
         #### another state #####
         # self.var_canny_1 = TrackBar.Canny1()

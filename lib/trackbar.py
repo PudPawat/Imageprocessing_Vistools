@@ -13,7 +13,7 @@ class TrackBar(object):
             self.binary_th1_name = 'th1'
 
             # binary
-            cv.namedWindow(self.window_binary_name)
+            cv.namedWindow(self.window_binary_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.binary_th1_name, self.window_binary_name, self.binary_th1,
                               self.binary_th_max,
                               self.on_binary_th1)
@@ -38,7 +38,7 @@ class TrackBar(object):
             self.Y_canny_name = 'Y_Canny'
             self.X_canny_name = 'X_Canny'
 
-            cv.namedWindow(self.window_canny_name)
+            cv.namedWindow(self.window_canny_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.X_canny_name, self.window_canny_name, self.X_canny,
                               self.canny_max,
                               self.on_X_canny)
@@ -67,7 +67,7 @@ class TrackBar(object):
             self.Y_canny_name = 'Y_Canny'
             self.X_canny_name = 'X_Canny'
 
-            cv.namedWindow(self.window_canny_name)
+            cv.namedWindow(self.window_canny_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.X_canny_name, self.window_canny_name, self.X_canny,
                               self.canny_max,
                               self.on_X_canny)
@@ -94,7 +94,7 @@ class TrackBar(object):
             self.blur1 = 1
             self.blur_1_name = 'blur_1'
 
-            cv.namedWindow(self.window_blur_name)
+            cv.namedWindow(self.window_blur_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.blur_1_name, self.window_blur_name, self.blur1,
                               self.blur_max,
                               self.on_blur_1)
@@ -115,7 +115,7 @@ class TrackBar(object):
             self.sharp = 1
             self.sharp_1_name = 'sharp_val'
 
-            cv.namedWindow(self.window_sharp_name)
+            cv.namedWindow(self.window_sharp_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.sharp_1_name, self.window_sharp_name, self.sharp,
                               self.sharp_max,
                               self.on_sharp_1)
@@ -225,7 +225,7 @@ class TrackBar(object):
             self.high_S_name = 'High S'
             self.high_V_name = 'High V'
 
-            cv.namedWindow(self.window_detection_name)
+            cv.namedWindow(self.window_detection_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.low_H_name, self.window_detection_name, self.low_H, self.max_value_H,
                               self.on_low_H_thresh_trackbar)
             cv.createTrackbar(self.high_H_name, self.window_detection_name, self.high_H, self.max_value_H,
@@ -293,7 +293,7 @@ class TrackBar(object):
             self.line5_name = "srn(def=0)"
             self.line6_name = "stn(def=0)"
 
-            cv.namedWindow(self.window_line_detection_name)
+            cv.namedWindow(self.window_line_detection_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.line1_name, self.window_line_detection_name, self.line1, self.max_line1,
                               self.on_line_1)
             cv.createTrackbar(self.line2_name, self.window_line_detection_name, self.line2, self.max_value,
@@ -346,7 +346,7 @@ class TrackBar(object):
             self.min_name = "min"
             self.max_name = "max"
 
-            cv.namedWindow(self.window_circle_det_name)
+            cv.namedWindow(self.window_circle_det_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.circle_param1_name, self.window_circle_det_name, self.circle_param1, self.max_all,
                               self.on_cir_param1)
             cv.createTrackbar(self.circle_param2_name, self.window_circle_det_name, self.circle_param2, self.max_all,
@@ -390,7 +390,7 @@ class TrackBar(object):
             self.min_name = "min"
             self.max_name = "max"
 
-            cv.namedWindow(self.window_circle_det_name)
+            cv.namedWindow(self.window_circle_det_name, cv.WINDOW_NORMALvvvvv)
             cv.createTrackbar(self.circle_param1_name, self.window_circle_det_name, self.circle_param1, self.max_all,
                               self.on_cir_param1)
             cv.createTrackbar(self.circle_param2_name, self.window_circle_det_name, self.circle_param2, self.max_all,
@@ -429,7 +429,7 @@ class TrackBar(object):
             self.kernel_name = "kenel_size"
             self.type_name = "ty:1REC,2GRA,3Cro,4DIA,5SQR,6STA,7ELIP"
 
-            cv.namedWindow(self.window_dilate_det_name)
+            cv.namedWindow(self.window_dilate_det_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.kernel_name, self.window_dilate_det_name, self.kernel_size, self.max_size,
                               self.on_kernel_size)
             cv.createTrackbar(self.type_name, self.window_dilate_det_name, self.type_kernel, self.max_type,
@@ -456,7 +456,7 @@ class TrackBar(object):
             self.kernel_name = "kenel_size"
             self.type_name = "ty:1REC,2GRA,3Cro,4DIA,5SQR,6STA,7ELIP"
 
-            cv.namedWindow(self.window_dilate_det_name)
+            cv.namedWindow(self.window_dilate_det_name, cv.WINDOW_NORMAL)
             cv.createTrackbar(self.kernel_name, self.window_dilate_det_name, self.kernel_size, self.max_size,
                               self.on_kernel_size)
             cv.createTrackbar(self.type_name, self.window_dilate_det_name, self.type_kernel, self.max_type,

@@ -1,0 +1,2 @@
+Time,Error_File,Error_Function,Error_Level,Error_Message
+[2021-08-31 11:36:11], [F:/Ph], [__init__], [ERROR], config/main.json doesn't exist. Please, select the file again!
