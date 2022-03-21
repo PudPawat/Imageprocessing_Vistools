@@ -491,3 +491,22 @@ class Imageprocessing(object):
 
         return erode, (kernel_size, type_kernel)
 
+    def sobel(self, img,params, show=True):
+        kernel_size, delta_val, scale_val = params
+        ddepth = cv.CV_16S
+
+        if len(img.shape) == 3:
+            img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+        grad_x = cv.Sobel(img, ddepth, 1, 0, ksize=kernel_size, scale=scale_val, delta=delta_val,
+                          borderType=cv.BORDER_DEFAULT)
+        grad_y = cv.Sobel(img, ddepth, 0, 1, ksize=kernel_size, scale=scale_val, delta=delta_val,
+                          borderType=cv.BORDER_DEFAULT)
+        abs_grad_x = cv.convertScaleAbs(grad_x)
+        abs_grad_y = cv.convertScaleAbs(grad_y)
+        grad = cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
+
+
+        if show == True:
+            cv.imshow(self.var_sobel.window_sobel_det_name, grad)
+
+        return grad, (kernel_size, delta_val, scale_val)

@@ -13,6 +13,9 @@ class Imageprocessing(object):
             elif improc_module == "blur":
                 self.var_blur = TrackBar.Blur()
 
+            elif improc_module == "gaussianblur":
+                self.var_gaussianblur = TrackBar.GaussianBlur()
+
             elif improc_module == "thresh":
                 self.var_binary = TrackBar.Binary()
 
@@ -33,6 +36,11 @@ class Imageprocessing(object):
 
             elif improc_module == "circle":
                 self.var_circle_det = TrackBar.CircleDetection()
+
+            elif improc_module == "sobel":
+                self.var_sobel = TrackBar.Sobel()
+
+
 
 
 
@@ -118,6 +126,27 @@ class Imageprocessing(object):
 
         return blur,(filter_size)
 
+    def gaussianblur(self,img, show = True):
+        '''
+        Buring
+        :param img:
+        :param show:
+        :return: blur,(filter_size)
+        '''
+
+        x,y = self.var_gaussianblur.return_var()
+
+        if not (x > 0 and x % 2 == 1):
+            x = x+1
+        if not (y > 0 and y % 2 == 1):
+            y =y +1
+        blur = cv.GaussianBlur(img, (int(x), int(y)),0)
+
+        if show == True:
+            cv.imshow(self.var_gaussianblur.window_blur_name, blur)
+
+        return blur,(x,y)
+
     def HSV_range(self,img, mode = "HSV",show = True):
         '''
         Thresholding by HSV : by setting lower bound and upper bound
@@ -128,16 +157,21 @@ class Imageprocessing(object):
         '''
         low_H, low_S, low_V, high_H, high_S, high_V = self.var_HSV_range.return_var()
 
-
-        if mode == "HSV":
+        print(len(img.shape))
+        if len(img.shape) != 3:
+            img = cv.cvtColor(img,cv.COLOR_GRAY2BGR)
             frame_HSV = cv.cvtColor(img, cv.COLOR_BGR2HSV)
-
-            # frame_HSV = cv.cvtColor(frame_HSV, cv.COLOR_HSV2BGR)
-
             frame_threshold = cv.inRange(frame_HSV, (low_H, low_S, low_V), (high_H, high_S, high_V))
-        elif mode == "HLS":
-            frame_HLS = cv.cvtColor(img, cv.COLOR_BGR2HLS)
-            frame_threshold = cv.inRange(frame_HLS, (low_H, low_V, low_S), (high_H, high_V, high_S))
+
+        else:
+
+            if mode == "HSV":
+                frame_HSV = cv.cvtColor(img, cv.COLOR_BGR2HSV)
+                frame_threshold = cv.inRange(frame_HSV, (low_H, low_S, low_V), (high_H, high_S, high_V))
+            elif mode == "HLS":
+                frame_HLS = cv.cvtColor(img, cv.COLOR_BGR2HLS)
+                frame_threshold = cv.inRange(frame_HLS, (low_H, low_V, low_S), (high_H, high_V, high_S))
+
 
         if show == True:
             cv.imshow(self.var_HSV_range.window_detection_name, frame_threshold)
@@ -393,7 +427,31 @@ class Imageprocessing(object):
         #                                    (kernel_size, kernel_size))
         erode = cv.erode(img, kernel)
         if show == True:
-            cv.imshow(self.var_erode.window_dilate_det_name, erode)
+            cv.imshow(self.var_erode.window_erode_det_name, erode)
 
         return erode, (kernel_size, type_kernel)
 
+    def sobel(self,img, show =True):
+        '''
+        sobel is algorithm using derivitive of image
+        :param img:
+        :param show:
+        :return:
+        '''
+        kernel_size, delta_val, scale_val = self.var_sobel.return_var()
+        ddepth = cv.CV_16S
+        if not(kernel_size > 0 and kernel_size%2== 1):
+            kernel_size +=1
+        if len(img.shape) == 3 :
+            img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+        grad_x = cv.Sobel(img, ddepth, 1, 0, ksize=kernel_size, scale=scale_val, delta=delta_val, borderType=cv.BORDER_DEFAULT)
+        grad_y = cv.Sobel(img, ddepth, 0, 1, ksize=kernel_size, scale=scale_val, delta=delta_val, borderType=cv.BORDER_DEFAULT)
+        abs_grad_x = cv.convertScaleAbs(grad_x)
+        abs_grad_y = cv.convertScaleAbs(grad_y)
+        grad = cv.addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0)
+
+
+        if show == True:
+            cv.imshow(self.var_sobel.window_sobel_det_name, grad)
+        
+        return grad, (kernel_size, delta_val, scale_val)

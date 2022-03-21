@@ -107,6 +107,36 @@ class TrackBar(object):
         def return_var(self):
             return self.blur1
 
+    class GaussianBlur(object):
+
+        def __init__(self):
+            self.window_blur_name = 'GaussianBlur'
+            self.blur_max = 100
+            self.blur_y = 1
+            self.blur_x = 1
+            self.blur_x_name = 'blur x'
+            self.blur_y_name = "blur y"
+
+            cv.namedWindow(self.window_blur_name, cv.WINDOW_NORMAL)
+            cv.createTrackbar(self.blur_x_name, self.window_blur_name, self.blur_x,
+                              self.blur_max,
+                              self.on_blur_x)
+            cv.createTrackbar(self.blur_y_name, self.window_blur_name, self.blur_y,
+                              self.blur_max,
+                              self.on_blur_y)
+
+        # blur
+        def on_blur_x(self, val):
+            self.blur_x = val
+            cv.setTrackbarPos(self.blur_x_name, self.window_blur_name, self.blur_x)
+
+        def on_blur_y(self, val):
+            self.blur_y = val
+            cv.setTrackbarPos(self.blur_y_name, self.window_blur_name, self.blur_y)
+
+        def return_var(self):
+            return (self.blur_x, self.blur_y)
+
     class Sharpen(object):
 
         def __init__(self):
@@ -448,7 +478,7 @@ class TrackBar(object):
 
     class Erode(object):
         def __init__(self):
-            self.window_dilate_det_name = "erode"
+            self.window_erode_det_name = "erode"
             self.kernel_size = 5
             self.type_kernel = 5
             self.max_size = 100
@@ -456,19 +486,55 @@ class TrackBar(object):
             self.kernel_name = "kenel_size"
             self.type_name = "ty:1REC,2GRA,3Cro,4DIA,5SQR,6STA,7ELIP"
 
-            cv.namedWindow(self.window_dilate_det_name, cv.WINDOW_NORMAL)
-            cv.createTrackbar(self.kernel_name, self.window_dilate_det_name, self.kernel_size, self.max_size,
+            cv.namedWindow(self.window_erode_det_name, cv.WINDOW_NORMAL)
+            cv.createTrackbar(self.kernel_name, self.window_erode_det_name, self.kernel_size, self.max_size,
                               self.on_kernel_size)
-            cv.createTrackbar(self.type_name, self.window_dilate_det_name, self.type_kernel, self.max_type,
+            cv.createTrackbar(self.type_name, self.window_erode_det_name, self.type_kernel, self.max_type,
                               self.on_type_kenel)
 
         def on_kernel_size(self, val):
             self.kernel_size = val
-            cv.setTrackbarPos(self.kernel_name, self.window_dilate_det_name, self.kernel_size)
+            cv.setTrackbarPos(self.kernel_name, self.window_erode_det_name, self.kernel_size)
 
         def on_type_kenel(self, val):
             self.type_kernel = val
-            cv.setTrackbarPos(self.type_name, self.window_dilate_det_name, self.type_kernel)
+            cv.setTrackbarPos(self.type_name, self.window_erode_det_name, self.type_kernel)
 
         def return_var(self):
             return (self.kernel_size, self.type_kernel)
+
+    class Sobel(object):
+        def __init__(self):
+            self.window_sobel_det_name = "sobel"
+            self.kernel_size = 5
+            self.delta_val = 1
+            self.scale_val = 1
+            # self.type_kernel = 5
+            self.max_size = 100
+            self.max_ddepth = 20
+            self.kernel_name = "kenel_size"
+            self.delta_name = "delta_size"
+            self.scale_name = "scale"
+
+            cv.namedWindow(self.window_sobel_det_name, cv.WINDOW_NORMAL)
+            cv.createTrackbar(self.kernel_name, self.window_sobel_det_name, self.kernel_size, self.max_size,
+                              self.on_kernel_size)
+            cv.createTrackbar(self.delta_name, self.window_sobel_det_name, self.delta_val, self.max_size,
+                              self.on_delta)
+            cv.createTrackbar(self.scale_name, self.window_sobel_det_name, self.scale_val, self.max_ddepth,
+                              self.on_scale)
+
+        def on_kernel_size(self, val):
+            self.kernel_size = val
+            cv.setTrackbarPos(self.kernel_name, self.window_sobel_det_name, self.kernel_size)
+
+        def on_delta(self,val):
+            self.delta_val = val
+            cv.setTrackbarPos(self.delta_name, self.window_sobel_det_name, self.delta_val)
+
+        def on_scale(self,val):
+            self.scale_val = val
+            cv.setTrackbarPos(self.scale_name, self.window_sobel_det_name, self.scale_val)
+
+        def return_var(self):
+            return (self.kernel_size, self.delta_val, self.scale_val)

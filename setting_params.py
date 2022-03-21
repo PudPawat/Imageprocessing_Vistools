@@ -57,6 +57,9 @@ class Set_params():
             elif process == "blur":
                 frame_blur, params['blur'] = imgproc.blur(frame)
                 frame = deepcopy(frame_blur)
+            elif process == "gaussianblur":
+                frame_blur, params['gaussianblur'] = imgproc.gaussianblur(frame)
+                frame = deepcopy(frame_blur)
             elif process == "thresh":
                 frame_binary, params['thresh'] = imgproc.threshold(frame)
                 frame = deepcopy(frame_binary)
@@ -78,11 +81,14 @@ class Set_params():
             elif process == "circle":
                 frame_circle, circle, params['circle'] = imgproc.circle_detection(frame, frame, show=False)
                 frame = deepcopy(frame_circle)
+            elif process == "sobel":
+                frame_sobel, params["sobel"] = imgproc.sobel(frame)
+                frame = deepcopy(frame_sobel)
                 #### working space ###
                 # frame_HSV = cv.resize(frame_HSV,(int(frame_HSV.shape[1]/3),int(frame_HSV.shape[0]/3)))
                 # {'HSV': [0, 0, 147, 28, 47, 255], 'erode': (1, 0), 'dilate': (2, 0)}
                 # canny = frame_canny.copy()
-
+            self.frame = frame
             ### additional process ###
 
         return frame_result, params
@@ -128,8 +134,10 @@ class Set_params():
                     frame_result, params = self.process(frame, imgproc)
                     cv.imshow("Final", frame_result)
                     key = cv.waitKey(0)
+                    if key == ord('i'):
+                        cv.imwrite("./output/general/" +name,frame_result)
                     if key == ord('s') :
-                        cv.imwrite("output/" + name, frame_result)
+                        cv.imwrite("output/" + name, self.frame)
                         with open('config/params.json', 'w') as fp:
                             json.dump(params, fp)
                         print(params)
@@ -163,6 +171,9 @@ class Set_params():
             cv.imshow("Final", frame_result)
 
             key = cv.waitKey(0)
+            name = "test.jpg" ## change to date and time
+            if key == ord('i'):
+                cv.imwrite("./output/general/"+name)
             if key == ord('s') or key == 27:
                 with open('config/params.json', 'w') as fp:
                     json.dump(params, fp)
@@ -172,6 +183,8 @@ class Set_params():
                 break
 
 
+
+
 if __name__ == '__main__':
     # parser = argparse.ArgumentParser()
     # parser.add_argument('--source', type=str, default='pylon',
@@ -179,5 +192,6 @@ if __name__ == '__main__':
     #
     # opt = parser.parse_args()
 
-    Set_params()
+    set_param = Set_params()
+
     # print(parser)

@@ -159,6 +159,8 @@ class read_save(object):
                     frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
                 frame, circle, params['circle'] = self.imgproc.circle_detection(frame, frame0, params[key], show=False)
                 frame_proc["circle"] = frame
+            elif key == "sobel":
+                frame, params["soble"] = self.imgproc.sobel
         frame_proc["final"] = frame
 
         return frame_proc, circle, line

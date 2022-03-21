@@ -5,7 +5,7 @@ from lib_save.improc_save import *
 
 
 imgproc = Imageprocessing()
-
+params = {"HSV": [33, 77, 0, 48, 255, 222], "erode": [12, 0], "dilate": [14, 0]}
 
 with Path("config/params.json").open("r") as f:
     params = json.load(f)

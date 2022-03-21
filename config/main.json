@@ -1,12 +1,13 @@
 {
   "basic": {
-    "source": "data",
+    "source": "data/glass_pattern",
+    "source1": "data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle",
     "green":"config/green1.json",
     "gold": "",
     "black": "config/black1.json",
     "red": "config/red.json",
     "camera_config": "config/camera_config/a2A2590-60ucPRO_40065215.pfs",
-    "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle"],
-    "process": ["HSV","erode","dilate"]
+    "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle","sobel"],
+    "process": ["gaussianblur","sobel","HSV","erode","dilate"]
   }
 }
