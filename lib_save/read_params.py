@@ -77,6 +77,10 @@ class read_save(object):
                 # frame_blur, params['blur'] = imgproc.blur(frame, params[key])
                 frame, params['blur'] = self.imgproc.blur(frame, params[key])
                 frame_proc["blur"] = frame
+            
+            elif key == "gaussianblur":
+                frame, params["gaussianblur"] = self.imgproc.gaussianblur(frame,params[key])
+                frame_proc["gaussianblur"] = frame
 
             elif key == "line":
                 # frame_line, lines, params['line'] = imgproc.line_detection(frame, frame0, params[key])
@@ -96,9 +100,9 @@ class read_save(object):
                     frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
                 frame, circle, params['circle'] = self.imgproc.circle_detection(frame, frame0, params[key], show=False)
                 frame_proc["circle"] = frame
-                
+
             elif key == "sobel":
-                frame, params["sobel"] = self.imgproc.sobel
+                frame, params["sobel"] = self.imgproc.sobel(frame,params[key],show=False)
                 frame_proc["sobel"] = frame
 
         frame_proc["final"] = frame

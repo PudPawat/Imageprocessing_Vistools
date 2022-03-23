@@ -69,6 +69,10 @@ class Imageprocessing(object):
                 frame, params['blur'] = self.imgproc.blur(frame, params[key])
                 frame_proc["blur"] = frame
 
+            elif key == "gaussianblur":
+                frame, params["gaussianblur"] = self.imgproc.gaussianblur(frame,params[key])
+                frame_proc["gaussianblur"] = frame
+
             elif key == "line":
                 # frame_line, lines, params['line'] = imgproc.line_detection(frame, frame0, params[key])
                 if len(frame.shape) == 2:
@@ -89,7 +93,7 @@ class Imageprocessing(object):
                 frame_proc["circle"] = frame
 
             elif key == "sobel":
-                frame, params["sobel"] = self.imgproc.sobel
+                frame, params["sobel"] = self.imgproc.sobel(frame,params[key],show=False)
                 frame_proc["sobel"] = frame
 
         frame_proc["final"] = frame
@@ -215,6 +219,27 @@ class Imageprocessing(object):
 
         return blur,(filter_size)
 
+    def gaussianblur(self,img,params, show = True):
+        '''
+        Buring
+        :param img:
+        :param show:
+        :return: blur,(filter_size)
+        '''
+
+        x,y = params
+
+        if not (x > 0 and x % 2 == 1):
+            x = x+1
+        if not (y > 0 and y % 2 == 1):
+            y =y +1
+        blur = cv.GaussianBlur(img, (int(x), int(y)),0)
+
+        if show == True:
+            cv.imshow("gaussianblur", blur)
+
+        return blur,(x,y)
+
     def HSV_range(self,img,params,show = False, mode = "HSV"):
         """
         Function Name: HSV_range
@@ -236,7 +261,8 @@ class Imageprocessing(object):
         """ 
         low_H, low_S, low_V, high_H, high_S, high_V = params
 
-
+        if len(img.shape) != 3:
+            img = cv.cvtColor(img,cv.COLOR_GRAY2BGR)
         if mode == "HSV":
             frame_HSV = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 
@@ -594,6 +620,6 @@ class Imageprocessing(object):
 
 
         if show == True:
-            cv.imshow(self.var_sobel.window_sobel_det_name, grad)
+            cv.imshow("sobel", grad)
 
         return grad, (kernel_size, delta_val, scale_val)
