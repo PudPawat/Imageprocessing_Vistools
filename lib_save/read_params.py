@@ -18,69 +18,6 @@ class read_save(object):
         """        
         self.imgproc = Imageprocessing()
 
-
-    # def read_params(self, params, frame):
-    #     """
-    #     Function Name: read_params
-    #
-    #     Description: read all image processing from json file eg. threshold, HSV inrange
-    #     and put those parameters to process in Imageorocessing()
-    #
-    #     Argument:
-    #         params [dict] -> [all parameters]
-    #         frame [array] -> [image for processing]
-    #
-    #     Parameters:
-    #
-    #     Return:
-    #         frame [array] -> [image after process]
-    #
-    #     Edited by: [12-07-2020] [Pawat]
-    #     """
-    #     for key in params.keys():
-    #         # print(key)
-    #         if key == "HSV":
-    #             # frame_HSV, params['HSV'] = imgproc.HSV_range(frame, params[key])
-    #             frame, params['HSV'] = self.imgproc.HSV_range(frame, params[key])
-    #
-    #         elif key == "erode":
-    #             # frame_erode, params['erode'] = imgproc.erode(frame, params[key])
-    #             frame, params['erode'] = self.imgproc.erode(frame, params[key])
-    #
-    #         elif key == "dilate":
-    #             # frame_dialte, params['dilate'] = imgproc.dilate(frame, params[key])
-    #             frame, params['dilate'] = self.imgproc.dilate(frame, params[key])
-    #
-    #         elif key == "thresh":
-    #             # frame_binary, params['thresh'] = imgproc.threshold(frame, params[key])
-    #             frame, params['thresh'] = self.imgproc.threshold(frame, params[key])
-    #
-    #         elif key == "sharp":
-    #             # frame_sharp, params['sharp'] = imgproc.sharpen(frame, params[key])
-    #             frame, params['sharp'] = self.imgproc.sharpen(frame, params[key])
-    #
-    #         elif key == "blur":
-    #             # frame_blur, params['blur'] = imgproc.blur(frame, params[key])
-    #             frame, params['blur'] = self.imgproc.blur(frame, params[key])
-    #
-    #         elif key == "line":
-    #             # frame_line, lines, params['line'] = imgproc.line_detection(frame, frame0, params[key])
-    #             if len(frame.shape) == 2:
-    #                 frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
-    #             frame, lines, params['line'] = self.imgproc.line_detection(frame, frame0, params[key])
-    #
-    #         elif key == "canny":
-    #             # frame_canny, params['canny'] = imgproc.canny(frame, params[key], show=True)
-    #             frame, params['canny'] = self.imgproc.canny(frame, params[key], show=True)
-    #
-    #         elif key == "circle":
-    #             # frame_circle, circle, params['circle'] = imgproc.circle_detection(frame, frame0, params[key], show=False)
-    #             if len(frame.shape) == 2:
-    #                 frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
-    #             frame, circle, params['circle'] = self.imgproc.circle_detection(frame, frame0, params[key], show=False)
-    #
-    #     return frame
-
     def read_params(self, params, frame, print=False):
         """
         Function Name: read_params
@@ -140,6 +77,10 @@ class read_save(object):
                 # frame_blur, params['blur'] = imgproc.blur(frame, params[key])
                 frame, params['blur'] = self.imgproc.blur(frame, params[key])
                 frame_proc["blur"] = frame
+            
+            elif key == "gaussianblur":
+                frame, params["gaussianblur"] = self.imgproc.gaussianblur(frame,params[key])
+                frame_proc["gaussianblur"] = frame
 
             elif key == "line":
                 # frame_line, lines, params['line'] = imgproc.line_detection(frame, frame0, params[key])
@@ -159,8 +100,11 @@ class read_save(object):
                     frame0 = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR)
                 frame, circle, params['circle'] = self.imgproc.circle_detection(frame, frame0, params[key], show=False)
                 frame_proc["circle"] = frame
+
             elif key == "sobel":
-                frame, params["soble"] = self.imgproc.sobel
+                frame, params["sobel"] = self.imgproc.sobel(frame,params[key],show=False)
+                frame_proc["sobel"] = frame
+
         frame_proc["final"] = frame
 
         return frame_proc, circle, line

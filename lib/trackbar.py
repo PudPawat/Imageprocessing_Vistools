@@ -511,13 +511,14 @@ class TrackBar(object):
             self.scale_val = 1
             # self.type_kernel = 5
             self.max_size = 100
+            self.max_kernel_size = 31
             self.max_ddepth = 20
             self.kernel_name = "kenel_size"
             self.delta_name = "delta_size"
             self.scale_name = "scale"
 
             cv.namedWindow(self.window_sobel_det_name, cv.WINDOW_NORMAL)
-            cv.createTrackbar(self.kernel_name, self.window_sobel_det_name, self.kernel_size, self.max_size,
+            cv.createTrackbar(self.kernel_name, self.window_sobel_det_name, self.kernel_size, self.max_kernel_size,
                               self.on_kernel_size)
             cv.createTrackbar(self.delta_name, self.window_sobel_det_name, self.delta_val, self.max_size,
                               self.on_delta)
