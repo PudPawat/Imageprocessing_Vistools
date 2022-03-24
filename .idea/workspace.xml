@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bda84d3a-15a0-4425-92ef-e2ff76788e85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/casting_params.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/image_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/main.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/main.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/params.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/casting_params.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/casting_params.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,18 +37,14 @@
         <entry file="file://$PROJECT_DIR$/config/main.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="286">
-              <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/casting_params.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="66" selection-start-column="66" selection-end-column="66" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -76,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/image_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="46" column="55" lean-forward="true" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
+            <state relative-caret-position="99">
+              <caret line="46" column="55" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -104,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/lib/trackbar.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="352">
-              <caret line="466" lean-forward="true" selection-start-line="466" selection-end-line="466" />
+              <caret line="466" selection-start-line="466" selection-end-line="466" />
             </state>
           </provider>
         </entry>
@@ -204,14 +195,14 @@
         <option value="$PROJECT_DIR$/lib/improc.py" />
         <option value="$PROJECT_DIR$/config/main.json" />
         <option value="$PROJECT_DIR$/lib/image_processing.py" />
+        <option value="$PROJECT_DIR$/config/casting_params.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="y" value="-1088" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1935" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -225,11 +216,6 @@
             <path>
               <item name="Imageprocessing_Vistools" type="b2602c69:ProjectViewProjectNode" />
               <item name="Imageprocessing_Vistools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Imageprocessing_Vistools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Imageprocessing_Vistools" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Imageprocessing_Vistools" type="b2602c69:ProjectViewProjectNode" />
@@ -408,15 +394,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1975764" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24768825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20585048" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26874116" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3996857" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -627,33 +612,29 @@
     <entry file="file://$PROJECT_DIR$/lib/trackbar.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="466" lean-forward="true" selection-start-line="466" selection-end-line="466" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/casting_params.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="66" selection-start-column="66" selection-end-column="66" />
+          <caret line="466" selection-start-line="466" selection-end-line="466" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/main.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/image_processing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="46" column="55" lean-forward="true" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
+        <state relative-caret-position="99">
+          <caret line="46" column="55" selection-start-line="46" selection-start-column="55" selection-end-line="46" selection-end-column="55" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/casting_params.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
