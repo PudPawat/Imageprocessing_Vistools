@@ -77,7 +77,7 @@ class Set_params():
                 frame = deepcopy(frame_erode)
             elif process == "canny":
                 frame_canny, params['canny'] = imgproc.canny(frame, show=True)
-                frame = frame_canny.deepcopy()
+                frame = deepcopy(frame_canny)
             elif process == "circle":
                 frame_circle, circle, params['circle'] = imgproc.circle_detection(frame, frame, show=False)
                 frame = deepcopy(frame_circle)

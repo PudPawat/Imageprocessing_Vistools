@@ -1,6 +1,6 @@
 {
   "basic": {
-    "source": "data/casting",
+    "source": "data/CONTACTLENS_SEAL",
     "source1": "data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle",
     "green":"config/green1.json",
     "gold": "",
@@ -9,6 +9,7 @@
     "camera_config": "config/camera_config/a2A2590-60ucPRO_40065215.pfs",
     "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle","sobel"],
     "process": ["gaussianblur","HSV","erode","dilate"],
+    "process2": ["sobel","gaussianblur","canny","circle"],
     "process1": ["gaussianblur","sobel","blur","HSV","erode","dilate"]
   }
 }

@@ -31,6 +31,8 @@ def main_contour_proc(image,proc_param):
     img_params = improc.read_params(proc_param, frame)
     print(img_params[0])
     img = img_params[0]["final"]
+    cv2.namedWindow("after proc",cv2.WINDOW_NORMAL)
+    cv2.imshow("after proc",img)
     right_contours,draw_img = contour_area(img, draw_frame, 400 ,5000)
     # for contour in right_contours:
     #     cv2.drawContours(draw_frame)
@@ -42,7 +44,7 @@ def main_contour_proc(image,proc_param):
     if not os.path.exists("./output/casting/"+str(min_area)+"/"):
         os.mkdir("./output/casting/"+str(min_area)+"/")
     cv2.imwrite("./output/casting/"+str(min_area)+"/" + name, draw_img)
-    key = cv2.waitKey(1)
+    key = cv2.waitKey(0)
     return draw_img
 
 if __name__ == '__main__':
