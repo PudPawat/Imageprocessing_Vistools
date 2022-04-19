@@ -86,6 +86,7 @@ class Imageprocessing(object):
             img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
         canny = cv.Canny(img, Y_val, X_val)
+        print(canny)
         if show == True:
             cv.imshow(self.var_canny.window_canny_name, canny)
         return canny, (Y_val, X_val)
