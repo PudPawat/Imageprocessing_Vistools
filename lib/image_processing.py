@@ -70,11 +70,11 @@ def correction(
     # // Gaussian blur on tone map, for smoother transition
     if shadow_amount_percent * shadow_radius > 0:
         # shadow_map = cv2.GaussianBlur(shadow_map.reshape(height, width), ksize=(shadow_radius, shadow_radius), sigmaX=0).reshape(-1)
-        shadow_map = cv2.blur(shadow_map.reshape(height, width), ksize=(shadow_radius, shadow_radius)).reshape(-1)
+        shadow_map = cv2.blur(shadow_map.reshape(height, width), ksize=(int(shadow_radius+2), int(shadow_radius+2))).reshape(-1)
 
     if highlight_amount_percent * highlight_radius > 0:
         # highlight_map = cv2.GaussianBlur(highlight_map.reshape(height, width), ksize=(highlight_radius, highlight_radius), sigmaX=0).reshape(-1)
-        highlight_map = cv2.blur(highlight_map.reshape(height, width), ksize=(highlight_radius, highlight_radius)).reshape(-1)
+        highlight_map = cv2.blur(highlight_map.reshape(height, width), ksize=(int(shadow_radius+2), int(shadow_radius+2))).reshape(-1)
 
     # Tone LUT
     t = np.arange(256)
@@ -121,6 +121,8 @@ if __name__ == '__main__':
     alpha = [1.0,0.1,0.1]
     beta = [0,0.5,0.5]
     # contrast = contrast_brightness_adjustment3ch(image[:,:,0],alpha,beta)
-    contrast = contrast_brightness_adjustment3ch(image,alpha[0],beta[0])
+    # contrast = contrast_brightness_adjustment3ch(image,alpha[0],beta[0])
+    contrast = correction(image,0.5,0.5,0.0,0.5,0.5,0.0,0.5)
     cv2.imshow("contra",contrast)
+    cv2.imshow("image",image)
     cv2.waitKey(0)
