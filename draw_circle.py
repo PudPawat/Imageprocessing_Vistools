@@ -44,11 +44,12 @@ class Draw():
             cv2.putText(img,str(self.coord),self.coord, cv2.FONT_HERSHEY_COMPLEX,0.5,(0,0,200),1)
             if self.count == 3:
                 print("Draw circle",self.count)
-                circle = self.define_circle(self.coords[0],self.coords[1],self.coords[2]) # return ((cx, cy), radius)
-                print(circle, circle[0])
-                cv2.circle(img, (int(circle[0][0]),int(circle[0][1])), int(circle[1]), (0, 0, 255), thickness=1)
+                self.circle = self.define_circle(self.coords[0],self.coords[1],self.coords[2]) # return ((cx, cy), radius)
+                print(self.circle, self.circle[0])
+                cv2.circle(img, (int(self.circle[0][0]),int(self.circle[0][1])), int(self.circle[1]), (0, 0, 255), thickness=1)
                 self.count = 0
                 self.coords = []
+
 
     @staticmethod
     def define_circle(p1, p2, p3):
@@ -69,6 +70,7 @@ class Draw():
         cy = ((p1[0] - p2[0]) * cd - (p2[0] - p3[0]) * bc) / det
 
         radius = np.sqrt((cx - p1[0]) ** 2 + (cy - p1[1]) ** 2)
+
         return ((cx, cy), radius)
 if __name__ == '__main__':
 
@@ -78,8 +80,6 @@ if __name__ == '__main__':
     # img = np.zeros((512, 512, 3), np.uint8)
 
     # This names the window so we can reference it
-    cv2.namedWindow('image')
-    cv2.setMouseCallback('image', draw.get_coord)
     # Connects the mouse button to our callback function
     circle = None
     circles = []
@@ -89,14 +89,18 @@ if __name__ == '__main__':
         img = cv2.imread(path + name)
         img = cv2.resize(img,(int(img.shape[1]*0.3),int(img.shape[0]*0.3)))
 
+        cv2.namedWindow('image')
+        # cv2.setMouseCallback('image', draw.get_coord)
+        cv2.setMouseCallback('image', draw.draw_circle_one_click)
+
         while (1):
 
             cv2.imshow('image', img)
             if circle != draw.circle:
                 print(draw.circle)
                 circle = draw.circle
-                circle = [(int(circle[0][0]/0.3),int(circle[0][1]/0.3)), int(circle[1]/0.3)]
-                circles.append(circle)
+                circle_resize = [(int(circle[0][0]/0.3),int(circle[0][1]/0.3)), int(circle[1]/0.3)]
+                circles.append(circle_resize)
 
             # EXPLANATION FOR THIS LINE OF CODE:
             # https://stackoverflow.com/questions/35372700/whats-0xff-for-in-cv2-waitkey1/39201163

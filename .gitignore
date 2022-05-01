@@ -7,3 +7,4 @@ past_data/*
 output/*
 project_*
 .idea*
+.idea/*
