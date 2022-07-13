@@ -102,7 +102,7 @@ def reverse_crop_focus(coord,crop_params, top_crop1= 819,left_crop1 = 1036):
     :return: new (x,y)
     '''
     new_x, new_y = (int(left_crop1 + crop_params[2] + coord[0] * (crop_params[3] - crop_params[2]) / 640),
-                    int(top_crop1 + crop_params[0] + coord[1] * (crop_params[0] - crop_params[1]) / 480))
+                    int(top_crop1 + crop_params[0] + coord[1] * (crop_params[1] - crop_params[0]) / 480))
     return new_x,new_y
 
 if __name__ == '__main__':
