@@ -50,6 +50,15 @@ def arrow_mask(source_result, name, params_arrow):
     frame_threshold = reading.read_params(params_arrow, frame)
     return frame_threshold[0]["HSV"]
 
+
+def arrow_mask_frame(frame, params_arrow):
+    # frame = cv2.imread(source_result + "/" + name)
+    # cv2.imshow("frame",frame)
+    # print(frame)
+    # print(params_arrow)
+    frame_threshold = reading.read_params(params_arrow, frame)
+    return frame_threshold[0]["HSV"]
+
 def coordinate_of_cropped_FOV(frame,params):
     ## read originam image from stereo vision
     # frame = cv2.imread(source + "/" + name)
@@ -96,13 +105,14 @@ def coordinate_of_cropped_FOV(frame,params):
 if __name__ == '__main__':
     reading = read_save()
     # params = {"HSV": [33, 77, 0, 48, 255, 222], "erode": [5, 0], "dilate": [18, 0]}
-    params = {"HSV": [33, 77, 0, 48, 255, 222], "erode": [12, 0], "dilate": [14, 0]}
+    # params = {"HSV": [33, 77, 0, 48, 255, 222], "erode": [0, 0], "dilate": [100, 0]}
+    params = {'HSV': [0, 15, 0, 149, 255, 199], 'gaussianblur': (5, 5),'treshold':(0,1), 'dilate': (5, 0), 'erode': (300, 0)}
     # params = {"HSV": [33, 77, 0, 48, 255, 222], "erode": [5, 0], "dilate": [14, 0]}
-    source = "data/240degree"
+    source = "../data/240degree"
     # source = "output/240degree" ## cropped output
-    source_result = "data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle"
-    output_path = "output/240degree/"
-    TXT_path = "data/OUTPUT_PUWATs_DATA/240degree/TXT"
+    source_result = "../data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle"
+    output_path = "../output/240degree/"
+    TXT_path = "../data/OUTPUT_PUWATs_DATA/240degree/TXT"
     params_arrow = {"HSV": [54, 52, 199, 65, 255, 255], "erode": [1, 0], "dilate": [22, 0]}
 
     im_name = os.listdir(source)
@@ -119,6 +129,12 @@ if __name__ == '__main__':
         bot = int(y*0.85)
         right = int(x*0.85)
         crop_img = frame[top:bot, left:right]
+        cv2.imshow("crop_img",crop_img)
+        # cv2.waitKey(0)
+        result_mask = arrow_mask_frame(crop_img, params)
+        print("asdasd", result_mask.shape)
+        cv2.imshow("mask",result_mask)
+        # cv2.waitKey(0)
         print(crop_img.shape) ##  y = 921, x = 1167
         crop_img = cv2.resize(crop_img,(640,480))
         cv2.imshow("test",crop_img)

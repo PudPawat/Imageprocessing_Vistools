@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"gaussianblur": [1, 1], "HSV": [0, 0, 75, 180, 255, 255], "erode": [17, 0], "dilate": [5, 0]}
+=======
+{"sobel": [3, 10, 3], "gaussianblur": [1, 1], "canny": [10, 10], "circle": [1, 5, 0, 20]}
+>>>>>>> 2d75e55dd4fc3044bca10c85d8a075a081aa595c
