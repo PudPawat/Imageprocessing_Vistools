@@ -4,7 +4,10 @@ from copy import deepcopy
 import os
 
 def contour_area(bi_image, draw_img,area_min = 0,area_max =1,write_area = True):
-    _,contours,_ = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    try:
+        _,contours,_ = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    except:
+        _,contours = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     right_contours = []
     if type(draw_img) != type(None):
         draw = True
@@ -48,7 +51,7 @@ def main_contour_proc(image,proc_param):
     return draw_img
 
 if __name__ == '__main__':
-    source = "C:\\Users\\Pawat\\Desktop\\Study python\\Pawat\\Imageprocessing_Vistools\\data\\casting"
+    source = "F:\Pawat\Projects\Imageprocessing_Vistools\data\casting"
     # params = {"gaussianblur": [5, 29], "sobel": [5, 100, 1], "blur": 14, "HSV": [0, 0, 76, 180, 255, 255], "erode": [5, 0], "dilate": [4, 0]}
     # params = {'gaussianblur': (13, 13), 'sobel': (3, 100, 6), 'blur': 16, 'HSV': [0, 0, 120, 180, 255, 255],"dilate": [2, 0], "erode": [5, 0]}
     params = {'gaussianblur': (21, 33), 'sobel': (5, 56, 1), 'blur': 1, 'HSV': [0, 0, 110, 180, 255, 220],"erode": [10, 0], "dilate": [14, 0]}

@@ -167,7 +167,7 @@ class Set_params():
 
             frame_result, params = self.process(frame, imgproc)
             cv.putText(frame_result, "Press 's' to save and Press 'q' to quit",
-                       (0, frame_result.shape[0]-20), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 0), 3)
+                       (0, frame_result.shape[0]-20), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255, 100, 0), 3)
             cv.imshow("Final", frame_result)
 
             key = cv.waitKey(0)

@@ -40,7 +40,8 @@ class Draw():
             ix, iy = x, y
             self.coords.append([ix, iy])
             self.count +=1
-            self.coord = [x,y]
+            self.coord = (x,y)
+            print(self.coord)
             cv2.putText(img,str(self.coord),self.coord, cv2.FONT_HERSHEY_COMPLEX,0.5,(0,0,200),1)
             if self.count == 3:
                 print("Draw circle",self.count)
@@ -83,8 +84,9 @@ if __name__ == '__main__':
     # Connects the mouse button to our callback function
     circle = None
     circles = []
-    path = "data/CONTACTLENS_SEAL/"
+    path = "data/container/"
     names = os.listdir(path)
+    print(names)
     for name in names:
         img = cv2.imread(path + name)
         img = cv2.resize(img,(int(img.shape[1]*0.3),int(img.shape[0]*0.3)))
@@ -93,7 +95,7 @@ if __name__ == '__main__':
 
             cv2.imshow('image', img)
             if circle != draw.circle:
-                print(draw.circle)
+                print("draw.circle",draw.circle)
                 circle = draw.circle
                 circle = [(int(circle[0][0]/0.3),int(circle[0][1]/0.3)), int(circle[1]/0.3)]
                 circles.append(circle)
@@ -101,13 +103,16 @@ if __name__ == '__main__':
             # EXPLANATION FOR THIS LINE OF CODE:
             # https://stackoverflow.com/questions/35372700/whats-0xff-for-in-cv2-waitkey1/39201163
             k = cv2.waitKey(1) & 0xFF
-            if k == 27:
+            if k == ord("q"):
                 break
             elif k == ord("r"):
                 if circles != []:
                     del circles[-1]
-                print(circles)
+                print("circles",circles)
         # Once script is done, its usually good practice to call this line
         # It closes all windows (just in case you have multiple windows called)
+        crop_circle = draw.circle
+        img_crop = img[int(crop_circle[1]):int(crop_circle[1] + crop_circle[2]),
+                   int(crop_circle[0]):int(crop_circle[0] + crop_circle[2])]
         print("final circle", circles)
         cv2.destroyAllWindows()
