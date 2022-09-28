@@ -1,25 +1,15 @@
 {
   "basic": {
-<<<<<<< HEAD
-    "source": "data/container",
+    "source": "data/container/image/60000_focus",
     "source1": "data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle",
-=======
-    "source1": "./data/240degree",
-    "source": "data\\20220511container_img-20220712T064457Z-001\\20220511container_img\\Exposure_0.5s",
->>>>>>> 2d75e55dd4fc3044bca10c85d8a075a081aa595c
     "green":"config/green1.json",
     "gold": "",
     "black": "config/black1.json",
     "red": "config/red.json",
     "camera_config": "config/camera_config/a2A2590-60ucPRO_40065215.pfs",
     "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle","sobel"],
-<<<<<<< HEAD
-    "process": ["gaussianblur","HSV","erode","dilate","canny","circle"],
-    "process2": ["sobel","gaussianblur","canny","circle"],
-=======
-    "process2": ["HSV","gaussianblur","dilate","erode","canny","circle"],
-    "process": ["sobel","gaussianblur","canny","circle"],
->>>>>>> 2d75e55dd4fc3044bca10c85d8a075a081aa595c
+    "process": ["HSV","gaussianblur","dilate","erode","canny","circle"],
+    "process2": ["sobel","gaussianblur","canny","thresh","circle"],
     "process1": ["gaussianblur","sobel","blur","HSV","erode","dilate"]
   }
 }

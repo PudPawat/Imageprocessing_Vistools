@@ -58,10 +58,13 @@ def warp_reverser_warp(img, circle = (546.1550518881522, 421.04824877486305, 384
 if __name__ == '__main__':
 
 
-    path = "data/container"
+    path = "F:\Pawat\Projects\Imageprocessing_Vistools\data\container\\0927_200000"
+    path = "F:\Pawat\Projects\Imageprocessing_Vistools\data\container\\0924_morning"
+    path = "F:\Pawat\Projects\Imageprocessing_Vistools\data\container\\image\\Exposure time 200000us"
     names = os.listdir(path)
 
     crop_circle = (546.1550518881522, 421.04824877486305, 384.2470775195958)
+    crop_circle = (546.1550518881522, 421.04824877486305, 375.2470775195958)
 
     for name in names:
         img = cv2.imread(os.path.join(path,name))
@@ -75,8 +78,10 @@ if __name__ == '__main__':
         img, warp = warp_polar(img,crop_circle)
         reversed_warp = reverse_warp(img,warp,crop_circle)
 
-        cv2.imwrite(os.path.join(path,"warp_"+name), reversed_warp)
+        reversed_warp = reversed_warp[int(crop_circle[1]-crop_circle[2]):int(crop_circle[1]+crop_circle[2]),
+                        int(crop_circle[0]-crop_circle[2]):int(crop_circle[0]+crop_circle[2])]
 
+        cv2.imwrite(os.path.join(path,"00warp_"+name), reversed_warp)
         cv2.imshow("show", reversed_warp)
         cv2.waitKey(1)
         time.sleep(0.1)

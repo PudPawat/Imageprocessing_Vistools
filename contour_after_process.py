@@ -2,28 +2,105 @@ import cv2
 from lib_save import Imageprocessing,read_save
 from copy import deepcopy
 import os
+import math
 
-def contour_area(bi_image, draw_img,area_min = 0,area_max =1,write_area = True):
-    try:
-        _,contours,_ = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    except:
-        _,contours = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+def contour_area(contours, area_min=0, area_max=1, write_area=True, draw_img = None):
     right_contours = []
     if type(draw_img) != type(None):
         draw = True
+    else:
+        draw = False
     for contour in contours:
-        area = cv2.contourArea(contour)
-        print(area)
+        try:
+            area = cv2.contourArea(contour)
+            # print(area)
+        except:
+            continue
         if area >= area_min and area <= area_max:
             right_contours.append(contour)
             if draw:
-                cv2.drawContours(draw_img,[contour],-1,(255,0,0),5)
+                cv2.drawContours(draw_img, [contour], -1, (255, 0, 0), 5)
                 pass
             if write_area:
                 M = cv2.moments(contour)
                 cX = int(M["m10"] / M["m00"])
                 cY = int(M["m01"] / M["m00"])
-                cv2.putText(draw_img,str(area),(cX,cY),cv2.FONT_HERSHEY_COMPLEX,2,(0,0,255),5)
+                cv2.putText(draw_img, str(area), (cX, cY), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 0, 255), 5)
+    return right_contours
+
+def contour_area_by_img(bi_image, draw_img,area_min = 0,area_max =1,write_area = True):
+    '''
+    to filter contour by using area_min and area_max
+    :param bi_image:
+    :param draw_img:
+    :param area_min:
+    :param area_max:
+    :param write_area:
+    :return:
+    '''
+    try:
+        _,contours,_ = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    except:
+        _,contours = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    right_contours = contour_area(contours, area_min, area_max,write_area,draw_img)
+
+
+    return right_contours, draw_img
+
+def cal_distance_coords(point1, point2):
+    '''
+
+    :param point1: (x1 ,y1)
+    :param point2: (x2 ,y2)
+    :return:
+    '''
+
+    x1, y1 = point1
+    x2, y2 = point2
+    dis = math.sqrt((x1-x2)**2 +(y1-y2)**2)
+    return dis
+
+def contour_center_dis(contours,ref_center, dis_criterion, draw_img = None):
+    if type(draw_img) != type(None):
+        draw = True
+    else:
+        draw = False
+    right_contours = []
+    for contour in contours:
+        try:
+            area = cv2.contourArea(contour)
+
+        except:
+            continue
+        # print(area)
+        M = cv2.moments(contour)
+        if M["m00"] == 0.0:
+            M["m00"] = 0.01
+        cX = int(M["m10"] / M["m00"])
+        cY = int(M["m01"] / M["m00"])
+        if cal_distance_coords(ref_center, (cX,cY)) < dis_criterion:
+            right_contours.append(contour)
+            if draw:
+                cv2.drawContours(draw_img, [contour], -1, (255, 0, 0), 5)
+    return right_contours
+
+
+def contour_center_distance_by_img(bi_image, draw_img, ref_center, dis_criterion):
+    '''
+    to filter contours by using center of contour
+    :param bi_image:
+    :param draw_img:
+    :param ref_center:
+    :param dis_criterion:
+    :return:
+    '''
+    try:
+        _,contours,_ = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    except:
+        _,contours = cv2.findContours(bi_image, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    print(contours)
+    right_contours = contour_center_dis(contours,ref_center, dis_criterion,draw_img)
     return right_contours, draw_img
 
 def main_contour_proc(image,proc_param):

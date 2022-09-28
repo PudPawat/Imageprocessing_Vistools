@@ -15,8 +15,9 @@ def matching_SIFT(img1,img2):
     matches = bf.knnMatch(des1,des2,k=2)
     # Apply ratio test
     good = []
-    for m,n in matches:
+    for i, (m,n )in enumerate(matches):
         if m.distance < 0.75*n.distance:
+            print(i,kp2[i].pt)
             good.append([m])
     # cv.drawMatchesKnn expects list of lists as matches.
     print("good",len(good),good)
@@ -39,16 +40,17 @@ def matching_SIFT_2(img1,img2):
     search_params = dict(checks=50)   # or pass empty dictionary
     flann = cv.FlannBasedMatcher(index_params,search_params)
     matches = flann.knnMatch(des1,des2,k=2)
-    print("matches", len(matches),matches)
+    # print("matches", len(matches),matches)
     # Need to draw only good matches, so create a mask
     matchesMask = [[0,0] for i in range(len(matches))]
     # ratio test as per Lowe's paper
     matched_count = 0
     for i,(m,n) in enumerate(matches):
         if m.distance < 0.9*n.distance:
+            print(i,kp2[i].pt)
             matchesMask[i]=[1,0]
             matched_count +=1
-    print('matches', matched_count)
+    # print('matches', matched_count)
     draw_params = dict(matchColor = (0,255,0),
                        singlePointColor = (255,0,0),
                        matchesMask = matchesMask,
