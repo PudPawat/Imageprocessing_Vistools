@@ -3,7 +3,7 @@ from lib_save import Imageprocessing,read_save
 from copy import deepcopy
 import os
 import math
-
+import numpy as np
 
 def contour_area(contours, area_min=0, area_max=1, write_area=True, draw_img = None):
     right_contours = []
@@ -24,6 +24,8 @@ def contour_area(contours, area_min=0, area_max=1, write_area=True, draw_img = N
                 pass
             if write_area:
                 M = cv2.moments(contour)
+                if M["m00"] == 0.0:
+                    M["m00"] = 0.01
                 cX = int(M["m10"] / M["m00"])
                 cY = int(M["m01"] / M["m00"])
                 cv2.putText(draw_img, str(area), (cX, cY), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 0, 255), 5)
@@ -84,6 +86,58 @@ def contour_center_dis(contours,ref_center, dis_criterion, draw_img = None):
             if draw:
                 cv2.drawContours(draw_img, [contour], -1, (255, 0, 0), 5)
     return right_contours
+
+def contour_center_X_or_Y(contours,ref_center, dis_criterion,var="X", draw_img = None):
+    if type(draw_img) != type(None):
+        draw = True
+    else:
+        draw = False
+    right_contours = []
+    for contour in contours:
+        try:
+            area = cv2.contourArea(contour)
+        except:
+            continue
+        # print(area)
+        M = cv2.moments(contour)
+        if M["m00"] == 0.0:
+            M["m00"] = 0.01
+        cX = int(M["m10"] / M["m00"])
+        cY = int(M["m01"] / M["m00"])
+        if var in ["X","x"]:
+            print("dis",cal_distance_coords((ref_center[0],0), (cX,0)))
+            if cal_distance_coords((ref_center[0],0), (cX,0)) < dis_criterion:
+                right_contours.append(contour)
+                if draw:
+                    cv2.drawContours(draw_img, [contour], -1, (255, 0, 0), 5)
+
+        elif var in ["Y","y"]:
+            if cal_distance_coords((0,ref_center), (0,cY)) < dis_criterion:
+                right_contours.append(contour)
+                if draw:
+                    cv2.drawContours(draw_img, [contour], -1, (255, 0, 0), 5)
+    return right_contours
+
+
+def contour_min_or_max(contours, mode = "max"):
+    areas = []
+    for contour in contours:
+        area = cv2.contourArea(contour)
+        areas.append(area)
+
+    if areas != []:
+        areas_array = np.asarray(areas)
+        if mode == "max":
+            idx = np.argmax(areas_array)
+        elif mode == "min":
+            idx = np.argmin(areas_array)
+        else:
+            idx = np.argmax(areas_array)
+
+        contour_max = contours[idx]
+    else:
+        contour_max = []
+    return  contour_max
 
 
 def contour_center_distance_by_img(bi_image, draw_img, ref_center, dis_criterion):

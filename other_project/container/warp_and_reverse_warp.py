@@ -2,7 +2,7 @@ import cv2
 import math
 import os
 import time
-
+import numpy as np
 
 def warp_polar( img_bi, circles):
     """
@@ -34,10 +34,13 @@ def reverse_warp(ori_image,warped_image,circles):
     TO REVERSE WARP IMAGE
     when using warp polar and want to reverse that warp image.
     :param ori_image:
-    :param warped_image:
+    :param warped_image:x
     :param circles:
     :return:
     '''
+    # ori_image = np.zeros(ori_image.shape[0:2], dtype = "unit8")
+    ori_image = np.zeros(ori_image.shape, dtype=np.int8)
+    # (warp_img.shape, dtype="uint8")
     if circles is not None:
         # circles = sorted(circles[0], key=lambda s: s[2])
         circle = int(circles[-1])
@@ -48,15 +51,31 @@ def reverse_warp(ori_image,warped_image,circles):
     return reversed_img
 
 
-def warp_reverser_warp(img, circle = (546.1550518881522, 421.04824877486305, 384.2470775195958),crop = True):
+def warp_reverser_warp(img, circle = (546.1550518881522, 421.04824877486305, 375.2470775195958),crop = True):
     if crop:
         img = cv2.resize(img, (int(img.shape[1] * 0.3), int(img.shape[0] * 0.3)))
     img, warp = warp_polar(img, circle)
     reversed_warp = reverse_warp(img, warp, circle)
     return reversed_warp
 
-if __name__ == '__main__':
 
+def preprocess(img, crop_circle):
+    img = cv2.resize(img, (int(img.shape[1] * 0.3), int(img.shape[0] * 0.3)))
+    # img_crop = img[int(crop_circle[1]/0.3):int(crop_circle[1]/0.3+crop_circle[2]/0.3),
+    #            int(crop_circle[0]/0.3):int(crop_circle[0]/0.3+crop_circle[2]/0.3)]
+    # cv2.imshow("resize", img)
+    # img_crop = img[int(crop_circle[1] - crop_circle[2]):int(crop_circle[1] + crop_circle[2]),
+    #            int(crop_circle[0] - crop_circle[2]):int(crop_circle[0] + crop_circle[2])]
+
+    img, warp = warp_polar(img, crop_circle)
+    reversed_warp = reverse_warp(img, warp, crop_circle)
+
+    reversed_warp = reversed_warp[int(crop_circle[1] - crop_circle[2]):int(crop_circle[1] + crop_circle[2]),
+                    int(crop_circle[0] - crop_circle[2]):int(crop_circle[0] + crop_circle[2])]
+    return reversed_warp
+
+if __name__ == '__main__':
+    ori_image = np.zeros((100,100), dtype=np.int8)
 
     path = "F:\Pawat\Projects\Imageprocessing_Vistools\data\container\\0927_200000"
     path = "F:\Pawat\Projects\Imageprocessing_Vistools\data\container\\0924_morning"
