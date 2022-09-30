@@ -60,6 +60,12 @@ def warp_reverser_warp(img, circle = (546.1550518881522, 421.04824877486305, 375
 
 
 def preprocess(img, crop_circle):
+    '''
+
+    :param img:
+    :param crop_circle:
+    :return:
+    '''
     img = cv2.resize(img, (int(img.shape[1] * 0.3), int(img.shape[0] * 0.3)))
     # img_crop = img[int(crop_circle[1]/0.3):int(crop_circle[1]/0.3+crop_circle[2]/0.3),
     #            int(crop_circle[0]/0.3):int(crop_circle[0]/0.3+crop_circle[2]/0.3)]

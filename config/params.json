@@ -1,1 +1,1 @@
-{"HSV": [52, 0, 80, 108, 118, 255], "gaussianblur": [1, 1], "dilate": [5, 0], "erode": [5, 0], "canny": [10, 10], "circle": [1, 5, 0, 20]}
+{"HSV": [62, 0, 82, 180, 75, 255], "gaussianblur": [1, 1], "dilate": [5, 0], "erode": [5, 0], "canny": [10, 10], "circle": [1, 5, 0, 20]}

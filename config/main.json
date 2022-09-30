@@ -1,6 +1,7 @@
 {
   "basic": {
-    "source": "data/container/image/60000_focus",
+    "source1": "data/container/image/60000_test",
+    "source": "F:\\Pawat\\Projects\\Imageprocessing_Vistools\\data\\container\\image\\Exposure time 120000us 30degree",
     "source1": "data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle",
     "green":"config/green1.json",
     "gold": "",
