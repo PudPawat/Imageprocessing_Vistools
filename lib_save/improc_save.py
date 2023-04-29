@@ -1,7 +1,6 @@
-import cv2 as cv
 import numpy as np
 import math
-from lib.trackbar import *
+from old.trackbar import *
 
 
 class Imageprocessing(object):

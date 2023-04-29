@@ -1,17 +1,11 @@
 {
   "basic": {
-    "source1": "data/container/image/60000_test",
-    "source3": "F:\\Pawat\\Projects\\Imageprocessing_Vistools\\data\\container\\image\\Exposure time 120000us 30degree",
-    "source": "F:\\Pawat\\Projects\\Imageprocessing_Vistools\\data\\container\\image\\Darker - Exposure time 120000us close some ambient light",
-    "source1": "data/OUTPUT_PUWATs_DATA/240degree/maskrcnn_angle",
-    "green":"config/green1.json",
-    "gold": "",
-    "black": "config/black1.json",
-    "red": "config/red.json",
+    "source": "dataset\\20230318",
+    "resize": "False",
     "camera_config": "config/camera_config/a2A2590-60ucPRO_40065215.pfs",
-    "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle","sobel"],
-    "process": ["HSV","gaussianblur","dilate","erode","canny","circle"],
-    "process2": ["sobel","gaussianblur","canny","thresh","circle"],
-    "process1": ["gaussianblur","sobel","blur","HSV","erode","dilate"]
+    "process_name": ["erode","sharp","blur","thresh","line","HSV","dilate","canny","circle","sobel","barrel_distort","crop","contour_area"],
+    "process": ["crop","barrel_distort","blur","HSV","erode","dilate","contour_area"],
+    "config_path": "./config/",
+    "config_name_format": "notchv2_config_"
   }
 }

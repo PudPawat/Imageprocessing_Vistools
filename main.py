@@ -1,10 +1,9 @@
 import os
 import cv2 as cv
-from lib.improc import Imageprocessing
+from old.improc import Imageprocessing
 import numpy as np
 import math
 import random as rng
-from lib.trackbar import TrackBar
 import json
 import argparse
 from pypylon import pylon

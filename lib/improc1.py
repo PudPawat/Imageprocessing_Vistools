@@ -1,6 +1,6 @@
 import numpy as np
 import math
-from .trackbar import *
+from old.trackbar import *
 import cv2 as cv
 from copy import deepcopy
 

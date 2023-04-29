@@ -84,7 +84,7 @@ if __name__ == '__main__':
     # Connects the mouse button to our callback function
     circle = None
     circles = []
-    path = "data/container/"
+    path = "F:\Ph.D\circle_classification\container-orientation-detection\dataset\\20230304\\"
     names = os.listdir(path)
     print(names)
     for name in names:
@@ -92,8 +92,8 @@ if __name__ == '__main__':
         img = cv2.resize(img,(int(img.shape[1]*0.3),int(img.shape[0]*0.3)))
 
         cv2.namedWindow('image')
-        # cv2.setMouseCallback('image', draw.get_coord)
-        cv2.setMouseCallback('image', draw.draw_circle_one_click)
+        cv2.setMouseCallback('image', draw.get_coord)
+        # cv2.setMouseCallback('image', draw.draw_circle_one_click)
 
         while (1):
 
@@ -116,7 +116,7 @@ if __name__ == '__main__':
         # Once script is done, its usually good practice to call this line
         # It closes all windows (just in case you have multiple windows called)
         crop_circle = draw.circle
-        img_crop = img[int(crop_circle[1]):int(crop_circle[1] + crop_circle[2]),
-                   int(crop_circle[0]):int(crop_circle[0] + crop_circle[2])]
+        # img_crop = img[int(crop_circle[1]):int(crop_circle[1] + crop_circle[2]),
+        #            int(crop_circle[0]):int(crop_circle[0] + crop_circle[2])]
         print("final circle", circles)
         cv2.destroyAllWindows()
