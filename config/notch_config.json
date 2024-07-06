@@ -1,0 +1,25 @@
+{
+  "params1": {"HSV": [0, 0, 70, 180, 255, 255], "erode": [4, 0], "dilate": [4, 0]},
+  "params": {"HSV": [0, 0, 50, 180, 255, 255], "dilate": [5, 0], "erode": [9, 0]},
+  "debug": "False",
+  "save_img": "False",
+  "show_result": "True",
+  "flag_rotate": "None",
+  "resize_ratio": 0.3,
+  "crop_circle_fix_r": [537, 403, 255],
+  "crop_circle_platform": [537, 403, 375],
+  "threshold_score": 100,
+  "text_color": [255,255,0],
+  "notch": {
+    "notch_dis_criterion": 15,
+    "notch_dis_from_right_edge": 8,
+    "notch_area_min": 500,
+    "notch_area_max": 5000
+  },
+  "object": {
+    "object_contour_area_min": 2000,
+    "object_contour_area_max": 2000000,
+    "object_contour_distance_criterion": 50,
+    "circle_radius_minus_safety": 10
+  }
+}

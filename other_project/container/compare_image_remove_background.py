@@ -1,13 +1,11 @@
-import cv2
 import os
 from lib_save.read_params import *
 from copy import deepcopy
 import numpy as np
 from PIL import Image
 import random
-from contour_after_process import contour_area, contour_center_distance_by_img,contour_area_by_img,contour_center_dis,contour_center_X_or_Y, contour_min_or_max
-from other_project.container.warp_and_reverse_warp import warp_polar,warp_reverser_warp, reverse_warp,preprocess
-
+from old.contour_after_process import contour_area, contour_center_dis,contour_center_X_or_Y
+from other_project.container.warp_and_reverse_warp import warp_polar, reverse_warp
 
 DISTANCE_CRITERION = 15
 DISTANCE_FROM_RIGHT_EDGE = 8

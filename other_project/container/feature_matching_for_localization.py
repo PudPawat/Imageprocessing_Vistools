@@ -1,10 +1,6 @@
 import os
-import numpy as np
 import cv2
-import time
-from copy import deepcopy
-from other_project.container.warp_and_reverse_warp import warp_polar,warp_reverser_warp
-from Feature_matching_2image import matching_SIFT
+from other_project.container.warp_and_reverse_warp import warp_polar
 
 path = "F:\Pawat\Projects\Imageprocessing_Vistools\data\container\image\\60000_focus"
 
