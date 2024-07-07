@@ -55,50 +55,50 @@ class Set_params():
             '''
         frame_result = frame.copy()
         for process in self.opt.basic.process:
-            if process == "sharp":
+            if "sharp" in process:
                 frame_sharp, params['sharp'] = imgproc.sharpen(frame)
                 frame = deepcopy(frame_sharp)
-            elif process == "blur":
+            elif "blur" in process:
                 frame_blur, params['blur'] = imgproc.blur(frame)
                 frame = deepcopy(frame_blur)
-            elif process == "gaussianblur":
+            elif "gaussianblur" in process:
                 frame_blur, params['gaussianblur'] = imgproc.gaussianblur(frame)
                 frame = deepcopy(frame_blur)
-            elif process == "thresh":
+            elif "thresh" in process:
                 frame_binary, params['thresh'] = imgproc.threshold(frame)
                 frame = deepcopy(frame_binary)
-            elif process == "line":
+            elif "line" in process:
                 frame_line, lines, params['line'] = imgproc.line_detection(frame, frame)
                 frame = deepcopy(frame_line)
-            elif process == "HSV":
+            elif "HSV" in process:
                 frame_HSV, params['HSV'] = imgproc.HSV_range(frame)
                 frame = deepcopy(frame_HSV)
-            elif process == "dilate":
+            elif "dilate" in process:
                 frame_dialte, params['dilate'] = imgproc.dilate(frame)
                 frame = deepcopy(frame_dialte)
-            elif process == "erode":
+            elif "erode" in process:
                 frame_erode, params['erode'] = imgproc.erode(frame)
                 frame = deepcopy(frame_erode)
-            elif process == "canny":
+            elif "canny" in process:
                 frame_canny, params['canny'] = imgproc.canny(frame, show=True)
                 frame = deepcopy(frame_canny)
-            elif process == "circle":
+            elif "circle" in process:
                 frame_circle, circle, params['circle'] = imgproc.circle_detection(frame, frame, show=True)
                 frame = deepcopy(frame_circle)
-            elif process == "sobel":
+            elif "sobel" in process:
                 frame_sobel, params["sobel"] = imgproc.sobel(frame)
                 frame = deepcopy(frame_sobel)
-            elif process == "barrel_distort":
+            elif "barrel_distort" in process:
                 # print("barrel_distort")
                 frame_barrel, params["barrel_distort"] = imgproc.barrel_distort(frame)
                 # print( params["barrel_distort"])
                 frame = deepcopy(frame_barrel)
-            elif process == "crop":
+            elif "crop" in process:
                 # print("crop")
                 frame_crop, params["crop"] = imgproc.crop(frame)
                 # print(params["crop"])
                 frame = deepcopy(frame_crop)
-            elif process == "contour_area":
+            elif "contour_area" in process:
                 # print("contour_area")
                 frame_crop, params["contour_area"] = imgproc.contour_area(frame)
                 # print(params["contour_area"])

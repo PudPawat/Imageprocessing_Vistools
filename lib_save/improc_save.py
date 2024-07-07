@@ -108,8 +108,19 @@ class Imageprocessing(object):
         :param show:
         :return:
         '''
+        if isinstance( params, (list,tuple)):
+            th_val, is_inv = params
+        elif isinstance( params, dict):
+            '''
+            params = {"threshold": int 0 to 255, 
+                      "inverse_threshold": 0 or 1 
+            }
+            '''
+            th_val = params.get('threshold', 0)
+            is_inv = params.get('inverse_threshold', 0)
+        else:
+            return
 
-        th_val, is_inv = params
         if is_inv == 1:
             flag = cv.THRESH_BINARY_INV
         else:
@@ -149,8 +160,15 @@ class Imageprocessing(object):
             params[tuple] -> (Y_val, X_val)
         
         Edited by: [12-04-2020] [Pawat]
-        """        
-        Y_val, X_val = params
+        """
+        if isinstance(params, (list, tuple)):
+            Y_val, X_val = params
+        elif isinstance(params, dict):
+            '''
+            :params = {"Y_val": int, "X_val": int}
+            '''
+            Y_val = params.get('Y_val')
+            X_val = params.get('X_val')
 
         if len(img.shape) == 3 :
             img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -177,8 +195,15 @@ class Imageprocessing(object):
             params[tuple] -> (Y_val, X_val)
         
         Edited by: [12-04-2020] [Pawat]
-        """ 
-        Y_val, X_val = params
+        """
+        if isinstance(params, (list, tuple)):
+            Y_val, X_val = params
+        elif isinstance(params, dict):
+            '''
+                        :params = {"Y_val": int, "X_val": int}
+                        '''
+            Y_val = params.get('Y_val')
+            X_val = params.get('X_val')
 
         if len(img.shape) == 3 :
             img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -205,8 +230,13 @@ class Imageprocessing(object):
             params[tuple] -> (filter_size)
         
         Edited by: [12-04-2020] [Pawat]
-        """        
-        filter_size = params
+        """
+        if isinstance(params, (list, tuple)):
+            filter_size = params
+        elif isinstance(params, dict):
+            ''' :params : {"filter_size": int}'''
+            filter_size = params.get('filter_size', 3)
+
         if filter_size < 1 :
             filter_size = 1
 
@@ -225,7 +255,12 @@ class Imageprocessing(object):
         :return: blur,(filter_size)
         '''
 
-        x,y = params
+        if isinstance( params, (list,tuple)):
+            x,y = params
+        elif isinstance( params, dict):
+            x = params.get('x_blur',1)
+            y = params.get('y_blur',1)
+
 
         if not (x > 0 and x % 2 == 1):
             x = x+1
@@ -257,7 +292,15 @@ class Imageprocessing(object):
         
         Edited by: [12-04-2020] [Pawat]
         """ 
-        low_H, low_S, low_V, high_H, high_S, high_V = params
+        if isinstance( params, (list,tuple)):
+            low_H, low_S, low_V, high_H, high_S, high_V = params
+        elif isinstance(params, dict):
+            low_H, low_S, low_V, high_H, high_S, high_V = params.get('low_H',1), \
+                                                          params.get('low_S',1), \
+                                                          params.get('low_V',1), \
+                                                          params.get('high_H',255), \
+                                                          params.get('high_S',255), \
+                                                          params.get('high_V',255),
 
         if len(img.shape) != 3:
             img = cv.cvtColor(img,cv.COLOR_GRAY2BGR)
@@ -295,7 +338,15 @@ class Imageprocessing(object):
         
         Edited by: [12-04-2020] [Pawat]
         """
-        low_H, low_S, low_V, high_H, high_S, high_V = params
+        if isinstance( params, (list,tuple)):
+            low_H, low_S, low_V, high_H, high_S, high_V = params
+        elif isinstance(params, dict):
+            low_H, low_S, low_V, high_H, high_S, high_V = params.get('low_H',0), \
+                                                          params.get('low_S',0), \
+                                                          params.get('low_V',0), \
+                                                          params.get('high_H',255), \
+                                                          params.get('high_S',255), \
+                                                          params.get('high_V',255),
 
         if mode == "HSV":
             frame_HSV = cv.cvtColor(img, cv.COLOR_BGR2HSV)
@@ -337,7 +388,12 @@ class Imageprocessing(object):
         
         Edited by: [12-04-2020] [Pawat]
         """        
-        factor = params
+        if isinstance( params, (list,tuple)):
+            factor = params
+        elif isinstance(params, dict):
+            factor = params.get('factor', 1)
+
+
         kernel = np.array([[-1, -1, -1], [-1, 9, -1], [-1, -1, -1]])
         kernel = (factor/10) * kernel
         img = cv.filter2D(img, -1, kernel)
@@ -428,7 +484,13 @@ class Imageprocessing(object):
 
         rows =  img.shape[0]
 
-        param1,param2, min,max = params
+        if isinstance( params, (list,tuple)):
+            param1,param2, min,max = params
+        elif isinstance(params, dict):
+            param1, param2, min, max = params.get('param1', 1), \
+                                       params.get('param2', 1), \
+                                       params.get('min_radius', 1), \
+                                       params.get('max_radius', 100)
 
         if param1 == 0:
             param1 = 1
@@ -480,7 +542,13 @@ class Imageprocessing(object):
 
         rows =  img.shape[0]
 
-        param1,param2, min, max = params
+        if isinstance( params, (list,tuple)):
+            param1,param2, min, max = params
+        elif isinstance(params, dict):
+            param1, param2, min, max = params.get('param1', 1), \
+                                       params.get('param2', 1), \
+                                       params.get('min_radius', 0), \
+                                       params.get('max_radius', 100)
 
         if param1 == 0:
             param1 = 1
@@ -525,7 +593,10 @@ class Imageprocessing(object):
         Edited by: [12-04-2020] [Pawat]
         """        
         # print("Note : \n type: 1 = RECTANGLE,2 = OPEN ,3 = Cross ,4 = DILATE ,5 = ERODE ,6 = ELLIPSE")
-        kernel_size, type_kernel = params
+        if isinstance( params, (list,tuple)):
+            kernel_size, type_kernel = params
+        elif isinstance(params, dict):
+            kernel_size, type_kernel = params.get("kernel_size", 3), params.get("type_kernel",2 )
 
         if type_kernel == 1:
             type_kernel = cv.MORPH_RECT #ok
@@ -574,7 +645,10 @@ class Imageprocessing(object):
         Edited by: [12-04-2020] [Pawat]
         """        
         # print("Note : \n type: 1 = RECTANGLE,2 = OPEN ,3 = Cross ,4 = DILATE ,5 = ERODE ,6 = ELLIPSE")
-        kernel_size, type_kernel = params
+        if isinstance( params, (list,tuple)):
+            kernel_size, type_kernel = params
+        elif isinstance(params, dict):
+            kernel_size, type_kernel = params.get("kernel_size"), params.get("type_kernel")
         # "ty:1REC,2GRA,3Cro,4DIA,5SQR,6STA,7ELIP"
         if type_kernel == 1:
             type_kernel = cv.MORPH_RECT  # ok
@@ -603,7 +677,13 @@ class Imageprocessing(object):
         return erode, (kernel_size, type_kernel)
 
     def sobel(self, img,params, show=True):
-        kernel_size, delta_val, scale_val = params
+        if isinstance( params, (list,tuple)):
+            kernel_size, delta_val, scale_val = params
+        elif isinstance(params, dict):
+            kernel_size, delta_val, scale_val = params.get("kernel_size", 3), \
+                                                params.get("delta_val"), \
+                                                params.get("scale_val")
+
         ddepth = cv.CV_16S
 
         if len(img.shape) == 3:
@@ -630,7 +710,19 @@ class Imageprocessing(object):
         :return:
         '''
         # offsetcx, offsetcy, ui_k1, ui_k2, ui_p1,ui_p2,focal_length_1,focal_length_2 = self.var_barrel_distort.return_var()
-        offsetcx, offsetcy, ui_k1, ui_k2, ui_p1,ui_p2,focal_length_1,focal_length_2 = params
+        if isinstance( params, (list,tuple)):
+            offsetcx, offsetcy, ui_k1, ui_k2, ui_p1,ui_p2,focal_length_1,focal_length_2 = params
+        elif isinstance(params, dict):
+            offsetcx, offsetcy, ui_k1, ui_k2, ui_p1, ui_p2, focal_length_1, focal_length_2, coef = params.get('offsetcx'), \
+                                                                                             params.get('offsetcy'), \
+                                                                                             params.get('ui_k1'),\
+                                                                                             params.get('ui_k1'),\
+                                                                                             params.get('ui_p1'),\
+                                                                                             params.get('ui_p1'),\
+                                                                                             params.get('focal_length_1'),\
+                                                                                             params.get('focal_length_2'), \
+                                                                                             params.get("coef")
+
         width = img.shape[1]
         height = img.shape[0]
         print(width/2, height/2)
@@ -638,10 +730,13 @@ class Imageprocessing(object):
         distCoeff = np.zeros((4, 1), np.float64)
 
         # TODO: add your coefficients here!
-        k1 = float(50 - ui_k1) * (1.0e-5)  # negative to remove barrel distortion
-        k2 = float(50 - ui_k2) * (1.0e-5)
-        p1 = float(50 - ui_p1) * (1.0e-5)
-        p2 = float(50 - ui_p2) * (1.0e-5)
+        print(coef)
+        if coef is None:
+            coef = 1.0e-5
+        k1 = float(50 - ui_k1) * (coef)  # negative to remove barrel distortion
+        k2 = float(50 - ui_k2) * (coef)
+        p1 = float(50 - ui_p1) * (coef)
+        p2 = float(50 - ui_p2) * (coef)
 
 
         distCoeff[0, 0] = k1;
@@ -673,7 +768,10 @@ class Imageprocessing(object):
         :return:
         '''
         # crop_x, crop_y = self.var_crop.return_var()
-        crop_x, crop_y = params
+        if isinstance( params, (list,tuple)):
+            crop_x, crop_y = params
+        elif isinstance( params, dict):
+            crop_x, crop_y = params.get("crop_x"), params.get("crop_y")
         width = img.shape[1]
         height = img.shape[0]
         new_width_left = int((width/2)-((width/2)*(crop_x/100)))
@@ -707,7 +805,15 @@ class Imageprocessing(object):
             _, contours = cv.findContours(bi_image, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
         # area_min, area_max, n, b2s = self.var_contour_area.return_var()
-        area_min, area_max, n, b2s, factor_min, factor_max  = params
+        if isinstance( params, (list,tuple)):
+            area_min, area_max, n, b2s, factor_min, factor_max  = params
+        elif isinstance( params, dict):
+            area_min, area_max, n, b2s, factor_min, factor_max = params.get('area_min'),\
+                                                                 params.get('area_max'),\
+                                                                 params.get('n'),\
+                                                                 params.get('b2s'),\
+                                                                 params.get('factor_min'),\
+                                                                 params.get('factor_max'),
 
         if factor_min == 0:
             factor_min = 1

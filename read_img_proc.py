@@ -237,13 +237,13 @@ if __name__ == "__main__":
         params = json.load(f)
 
     # read rectangle
-    with Path("config/rectangles_2.json").open("r") as f:
-        rect_params = json.load(f)
+    # with Path("config/rectangles_2.json").open("r") as f:
+    #     rect_params = json.load(f)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source', type=str, default='data\\20220511container_img-20220712T064457Z-001\\20220511container_img\Exposure_0.5s\\',
+    parser.add_argument('--source', type=str, default='cosmetic',
                         help='source pylon number for webcam')  # file/folder, 0 for webcam
 
     opt = parser.parse_args()
 
-    main(params,rect_params)
+    main(params,params)

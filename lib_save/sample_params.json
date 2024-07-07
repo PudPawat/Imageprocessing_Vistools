@@ -1,0 +1,67 @@
+{
+  "thresh": {
+    "threshold": 0,
+    "inverse_threshold": 1
+  },
+  "canny": {
+    "Y_val": 1,
+    "X_val": 1
+  },
+  "blur": {
+    "filter_size": 3
+  },
+  "gaussianblur": {
+    "x_blur": 1,
+    "y_blur": 1
+  },
+  "HSV": {
+    "low_H": 1,
+    "low_S": 1,
+    "low_V": 1,
+    "high_H": 255,
+    "high_S": 255,
+    "high_v": 255
+  },
+  "circle": {
+    "param1": 1,
+    "param2": 1,
+    "min_radius": 1,
+    "max_radius": 100
+  },
+  "dilate": {
+    "kernel_size": 3,
+    "type_kernel": 2
+  },
+  "erode": {
+    "kernel_size": 3,
+    "type_kernel": 2
+  },
+  "sobel": {
+    "kernel_size": 3,
+    "delta_val": 1,
+    "scale_val": 1
+  },
+  "barrel_distort": {
+    "offsetcx": 1,
+    "offsetcy": 1,
+    "ui_k1": 1,
+    "ui_k2": 1,
+    "ui_p1": 1,
+    "ui_p2": 1,
+    "focal_length_1": 1,
+    "focal_length_2": 1,
+    "coef": 1.0e-5
+  },
+  "crop": {
+    "crop_x": 10,
+    "crop_y": 10
+  },
+  "contour_area":{
+    "area_min": 1,
+    "area_max": 100,
+    "n": 10,
+    "b2s": 1,
+    "factor_min": 1,
+    "factor_max": 10
+  }
+}

@@ -18,7 +18,7 @@ class read_save(object):
         """        
         self.imgproc = Imageprocessing()
 
-    def read_params(self, params, frame, print=False):
+    def read_params(self, params, frame, show=False):
         """
         Function Name: read_params
 
